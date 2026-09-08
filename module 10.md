@@ -10,11 +10,84 @@ Algorithm:
  
 Program:
 
-//type your code here
+```python
 
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+int main()
+{
+    struct Node *head = NULL;
+    struct Node *temp;
+    struct Node *newNode;
+    int n, i, search, position = 1, found = 0;
+
+    printf("Enter the number of nodes: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        newNode = (struct Node *)malloc(sizeof(struct Node));
+
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &newNode->data);
+
+        newNode->next = NULL;
+
+        if (head == NULL)
+        {
+            head = newNode;
+        }
+        else
+        {
+            temp = head;
+
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+
+            temp->next = newNode;
+        }
+    }
+
+    printf("Enter the element to search: ");
+    scanf("%d", &search);
+
+    temp = head;
+
+    while (temp != NULL)
+    {
+        if (temp->data == search)
+        {
+            printf("Element %d found at position %d.\n",
+                   search, position);
+            found = 1;
+            break;
+        }
+
+        temp = temp->next;
+        position++;
+    }
+
+    if (found == 0)
+    {
+        printf("Element %d not found in the linked list.\n", search);
+    }
+
+    return 0;
+}
+```
 Output:
 
-//paste your output here
+
+<img width="853" height="426" alt="image" src="https://github.com/user-attachments/assets/6434d69b-35bd-4458-879f-0cdba973729d" />
 
 
 
@@ -34,11 +107,82 @@ Algorithm:
  
 Program:
 
-//type your code here
+```python
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+void insert(struct Node **head, int value)
+{
+    struct Node *newNode;
+    struct Node *temp;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (*head == NULL)
+    {
+        *head = newNode;
+    }
+    else
+    {
+        temp = *head;
+
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+
+        temp->next = newNode;
+    }
+}
+
+void display(struct Node *head)
+{
+    struct Node *temp = head;
+
+    while (temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    struct Node *head = NULL;
+    int n, i, value;
+
+    printf("Enter the number of nodes: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &value);
+
+        insert(&head, value);
+    }
+
+    printf("\nLinked list after insertion:\n");
+    display(head);
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
+<img width="847" height="393" alt="image" src="https://github.com/user-attachments/assets/4b9dc630-7e84-4dec-87f8-804efb3cc0e7" />
+
 
  
 Result:
@@ -58,11 +202,75 @@ Algorithm:
  
 Program:
 
-//type your code here
+```python
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *prev;
+    struct Node *next;
+};
+
+int main()
+{
+    struct Node *head = NULL;
+    struct Node *temp;
+    struct Node *newNode;
+    int n, i;
+
+    printf("Enter the number of nodes: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        newNode = (struct Node *)malloc(sizeof(struct Node));
+
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &newNode->data);
+
+        newNode->prev = NULL;
+        newNode->next = NULL;
+
+        if (head == NULL)
+        {
+            head = newNode;
+        }
+        else
+        {
+            temp = head;
+
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+
+            temp->next = newNode;
+            newNode->prev = temp;
+        }
+    }
+
+    printf("\nDoubly linked list elements:\n");
+
+    temp = head;
+
+    while (temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+
+    return 0;
+}
+```
+
 
 Output:
 
-//paste your output here
+<img width="840" height="382" alt="image" src="https://github.com/user-attachments/assets/7db11382-4b00-4a78-823d-5c5adabe1d20" />
+
 
 
 Result:
@@ -83,11 +291,85 @@ Algorithm:
  
 Program:
 
-//type your code here
+```python
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *prev;
+    struct Node *next;
+};
+
+void insert(struct Node **head, int value)
+{
+    struct Node *newNode;
+    struct Node *temp;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    newNode->data = value;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+
+    if (*head == NULL)
+    {
+        *head = newNode;
+    }
+    else
+    {
+        temp = *head;
+
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+
+        temp->next = newNode;
+        newNode->prev = temp;
+    }
+}
+
+void display(struct Node *head)
+{
+    struct Node *temp = head;
+
+    while (temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    struct Node *head = NULL;
+    int n, i, value;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &value);
+
+        insert(&head, value);
+    }
+
+    printf("\nDoubly linked list after insertion:\n");
+    display(head);
+
+    return 0;
+}
+```
+
 
 Output:
 
-//paste your output here
+<img width="855" height="442" alt="image" src="https://github.com/user-attachments/assets/31c8eb1c-24fd-455e-8c7a-c8b1d23b2fbd" />
+
 
 
 Result:
@@ -125,11 +407,125 @@ o	If the element is not found in any node, print a message indicating the elemen
 
 Program:
 
-//type your code here
+```python
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+void deleteElement(struct Node **head, int value)
+{
+    struct Node *temp;
+    struct Node *prev;
+
+    if (*head == NULL)
+    {
+        printf("Linked list is empty.\n");
+        return;
+    }
+
+    temp = *head;
+    prev = NULL;
+
+    while (temp != NULL && temp->data != value)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if (temp == NULL)
+    {
+        printf("Element %d not found.\n", value);
+        return;
+    }
+
+    if (prev == NULL)
+    {
+        *head = temp->next;
+    }
+    else
+    {
+        prev->next = temp->next;
+    }
+
+    free(temp);
+
+    printf("Element %d deleted successfully.\n", value);
+}
+
+void display(struct Node *head)
+{
+    struct Node *temp = head;
+
+    while (temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    struct Node *head = NULL;
+    struct Node *newNode;
+    struct Node *temp;
+
+    int n, i, value;
+
+    printf("Enter the number of nodes: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        newNode = (struct Node *)malloc(sizeof(struct Node));
+
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &newNode->data);
+
+        newNode->next = NULL;
+
+        if (head == NULL)
+        {
+            head = newNode;
+        }
+        else
+        {
+            temp = head;
+
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+
+            temp->next = newNode;
+        }
+    }
+
+    printf("\nLinked list before deletion:\n");
+    display(head);
+
+    printf("\n\nEnter the element to delete: ");
+    scanf("%d", &value);
+
+    deleteElement(&head, value);
+
+    printf("\nLinked list after deletion:\n");
+    display(head);
+
+    return 0;
+}
+```
+
 
 Output:
 
-//paste your output here
+
+<img width="848" height="522" alt="image" src="https://github.com/user-attachments/assets/72ad6113-25c4-476b-b875-8516dd219d91" />
+
 
 
 
@@ -137,8 +533,3 @@ Output:
 
 Result:
 Thus, the function that deletes a given element from a linked list is verified successfully.
-
-
-
-
-
