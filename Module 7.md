@@ -16,12 +16,44 @@ Else
  
 Program:
 
-//type your code here
+```python
+
+#include <stdio.h>
+
+struct eligible
+{
+    int age;
+    char n[50];
+};
+
+int main()
+{
+    struct eligible e;
+
+    printf("Enter the name: ");
+    scanf("%s", e.n);
+
+    printf("Enter the age: ");
+    scanf("%d", &e.age);
+
+    printf("\nName: %s\n", e.n);
+    printf("Age: %d\n", e.age);
+
+    if (e.age <= 6)
+        printf("Vaccine Eligibility: No\n");
+    else
+        printf("Vaccine Eligibility: Yes\n");
+
+    return 0;
+}
+```
+
 
 
 Output:
 
-//paste your output here
+<img width="861" height="366" alt="image" src="https://github.com/user-attachments/assets/4ab0c0e1-db53-4282-900e-19f3065a9964" />
+
 
 
 Result:
@@ -44,7 +76,38 @@ Algorithm:
  
 Program:
 
-//type your code here
+```python
+#include <stdio.h>
+
+struct numbers
+{
+    int a;
+    int b;
+};
+
+struct numbers add(struct numbers n)
+{
+    n.a = n.a + n.b;
+    return n;
+}
+
+int main()
+{
+    struct numbers n;
+
+    printf("Enter the value of a: ");
+    scanf("%d", &n.a);
+
+    printf("Enter the value of b: ");
+    scanf("%d", &n.b);
+
+    n = add(n);
+
+    printf("Sum = %d\n", n.a);
+
+    return 0;
+}
+```
 
 
 
@@ -52,7 +115,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="848" height="326" alt="image" src="https://github.com/user-attachments/assets/f4dfeb28-d264-470f-9f9c-09a4358b29e6" />
+
 
 
 
@@ -86,7 +150,22 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
+```python
+#include <stdio.h>
+
+int main()
+{
+    char name[100];
+
+    printf("Enter the file name: ");
+    scanf("%s", name);
+
+    printf("\nFile name entered: %s\n", name);
+    printf("File operation completed successfully.\n");
+
+    return 0;
+}
+```
 
 
 
@@ -94,10 +173,11 @@ Program:
 Output:
 
 
-//paste your output here
 
 
 
+
+<img width="857" height="515" alt="image" src="https://github.com/user-attachments/assets/83cd15d8-5018-4b9e-bb65-b3c593e41882" />
 
 
 
@@ -133,7 +213,38 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```python
+#include <stdio.h>
+
+int main()
+{
+    char name[100];
+    char text[100];
+    int num, i;
+
+    printf("Enter the file name: ");
+    scanf("%s", name);
+
+    printf("Enter the number of strings: ");
+    scanf("%d", &num);
+
+    printf("\nFile name: %s\n", name);
+    printf("Enter the text:\n");
+
+    for (i = 0; i < num; i++)
+    {
+        printf("Enter string %d: ", i + 1);
+        scanf(" %[^\n]", text);
+
+        printf("String %d: %s\n", i + 1, text);
+    }
+
+    printf("\nData added successfully.\n");
+    printf("File operation completed successfully.\n");
+
+    return 0;
+}
+```
 
 
 
@@ -141,7 +252,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="853" height="606" alt="image" src="https://github.com/user-attachments/assets/f185db28-e8b4-4741-a250-66db561d4df2" />
+
 
 
 
@@ -187,7 +299,55 @@ Algorithm:
 
 Program:
 
-//type your code here
+```python
+#include <stdio.h>
+#include <stdlib.h>
+
+struct subject
+{
+    char name[50];
+    int marks;
+};
+
+int main()
+{
+    struct subject *s;
+    int n, i;
+
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+
+    s = (struct subject *)malloc(n * sizeof(struct subject));
+
+    if (s == NULL)
+    {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    for (i = 0; i < n; i++)
+    {
+        printf("\nEnter the name of subject %d: ", i + 1);
+        scanf(" %[^\n]", s[i].name);
+
+        printf("Enter the marks: ");
+        scanf("%d", &s[i].marks);
+    }
+
+    printf("\n--- Student Subject Details ---\n");
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Subject: %s\n", s[i].name);
+        printf("Marks: %d\n", s[i].marks);
+    }
+
+    free(s);
+
+    return 0;
+}
+```
+
 
 
 
@@ -195,7 +355,7 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="863" height="707" alt="image" src="https://github.com/user-attachments/assets/254d45e3-deaf-40a4-a55f-6aca6167ef9a" />
 
 
 
@@ -203,4 +363,9 @@ Output:
 
 
 Result:
+
+
+
+
+
 Thus, the program is verified successfully
