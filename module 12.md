@@ -15,11 +15,68 @@ Algorithm:
  
 Program:
 
-//type your code here
+```python
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct Node *head = NULL;
+
+void display()
+{
+    struct Node *p = head;
+
+    if (p == NULL)
+    {
+        printf("Stack is empty.\n");
+        return;
+    }
+
+    printf("Stack elements are:\n");
+
+    while (p != NULL)
+    {
+        printf("%d\n", p->data);
+        p = p->next;
+    }
+}
+
+int main()
+{
+    struct Node *p1, *p2, *p3;
+
+    p1 = (struct Node *)malloc(sizeof(struct Node));
+    p2 = (struct Node *)malloc(sizeof(struct Node));
+    p3 = (struct Node *)malloc(sizeof(struct Node));
+
+    p1->data = 10;
+    p1->next = p2;
+
+    p2->data = 20;
+    p2->next = p3;
+
+    p3->data = 30;
+    p3->next = NULL;
+
+    head = p3;
+
+    display();
+
+    return 0;
+}
+```
+
 
 Output:
 
-//paste your output here
+
+<img width="851" height="258" alt="image" src="https://github.com/user-attachments/assets/70142e48-93e9-4d49-a0c7-1595692d57ed" />
 
 
 Result:
@@ -40,11 +97,86 @@ Algorithm:
  
 Program:
 
-//type your code here
+```python
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct Node *head = NULL;
+
+void push(int value)
+{
+    struct Node *newNode;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    newNode->data = value;
+    newNode->next = head;
+    head = newNode;
+}
+
+void pop()
+{
+    struct Node *temp;
+
+    if (head == NULL)
+    {
+        printf("Stack is empty.\n");
+        return;
+    }
+
+    temp = head;
+
+    printf("Popped element: %d\n", head->data);
+
+    head = head->next;
+
+    free(temp);
+}
+
+void display()
+{
+    struct Node *temp = head;
+
+    printf("Stack elements after pop:\n");
+
+    while (temp != NULL)
+    {
+        printf("%d\n", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    push(10);
+    push(20);
+    push(30);
+
+    printf("Stack before pop:\n");
+    display();
+
+    printf("\n");
+
+    pop();
+
+    printf("\n");
+    display();
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
+<img width="847" height="482" alt="image" src="https://github.com/user-attachments/assets/b1c51f01-3055-4e00-8041-eb71cd0961a6" />
+
 
 
 
@@ -64,11 +196,77 @@ Algorithm:
  
 Program:
 
-//type your code here
+```python
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct Node *front = NULL;
+struct Node *rear = NULL;
+
+void enqueue(int value)
+{
+    struct Node *newNode;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (front == NULL)
+    {
+        front = newNode;
+        rear = newNode;
+    }
+    else
+    {
+        rear->next = newNode;
+        rear = newNode;
+    }
+}
+
+void display()
+{
+    struct Node *temp = front;
+
+    if (front == NULL)
+    {
+        printf("Queue is empty.\n");
+        return;
+    }
+
+    printf("Queue elements are:\n");
+
+    while (temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    enqueue(40);
+
+    display();
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
+<img width="855" height="301" alt="image" src="https://github.com/user-attachments/assets/d3529560-f45e-4176-801c-4f6ab0a61a45" />
+
 
 Result:
 Thus, the program to display queue elements using linked list is verified successfully.
@@ -90,11 +288,78 @@ Algorithm:
  
 Program:
 
-//type your code here
+```python
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct Node *front = NULL;
+struct Node *rear = NULL;
+
+void enqueue(int value)
+{
+    struct Node *p;
+
+    p = (struct Node *)malloc(sizeof(struct Node));
+
+    p->data = value;
+    p->next = NULL;
+
+    if (front == NULL)
+    {
+        front = p;
+        rear = p;
+    }
+    else
+    {
+        rear->next = p;
+        rear = p;
+    }
+}
+
+void display()
+{
+    struct Node *temp = front;
+
+    while (temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+}
+
+int main()
+{
+    int n, i, value;
+
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter element %d: ", i + 1);
+        scanf("%d", &value);
+
+        enqueue(value);
+    }
+
+    printf("\nQueue after insertion:\n");
+    display();
+
+    return 0;
+}
+```
+
 
 Output:
 
-//paste your output here
+<img width="855" height="387" alt="image" src="https://github.com/user-attachments/assets/89b7be46-1d81-4863-ba31-936619f6fe9e" />
+
 
 Result:
 Thus, the program to insert elements in queue using linked list is verified successfully.
@@ -117,16 +382,81 @@ o	If the queue is not empty, return the data stored in the front node of the lin
 
 Program:
 
-//type your code here
+```python
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct Node *front = NULL;
+struct Node *rear = NULL;
+
+void enqueue(int value)
+{
+    struct Node *newNode;
+
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (front == NULL)
+    {
+        front = newNode;
+        rear = newNode;
+    }
+    else
+    {
+        rear->next = newNode;
+        rear = newNode;
+    }
+}
+
+int peek()
+{
+    if (front == NULL)
+    {
+        return -1;
+    }
+
+    return front->data;
+}
+
+int main()
+{
+    int value;
+
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    enqueue(40);
+
+    value = peek();
+
+    if (value == -1)
+    {
+        printf("Queue is empty.");
+    }
+    else
+    {
+        printf("Peek element of the queue = %d", value);
+    }
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
+
+<img width="832" height="296" alt="image" src="https://github.com/user-attachments/assets/1accbde8-1b53-4343-bf01-e94e57d3ffd5" />
 
 
 
 Result:
 
 Thus, the program to retrieve the "peek" (the front element) of a queue implemented using a linked list is verified successfully.
-
-
